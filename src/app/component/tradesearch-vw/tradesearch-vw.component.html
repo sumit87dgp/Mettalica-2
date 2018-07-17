@@ -1,0 +1,56 @@
+<div class="container">
+  <div class="row mb-0">
+    <div class="col-md-9 mb-0">
+      <!--Table-->
+      <div class="card card-body px-2 py-2">
+        <table class="table table-hover bg-light mx-0 my-0">
+
+          <!--Table head-->
+          <thead class="bg-primary">
+            <tr>
+              <th>Trade Date</th>
+              <th>Commodity</th>
+              <th>Side</th>
+              <th>Qty(MT)</th>
+              <th>Price(/MT)</th>
+              <th>Counterparty</th>
+              <th>Location</th>
+              <th></th>
+            </tr>
+          </thead>
+          <!--Table head-->
+
+          <!--Table body-->
+          <tbody>
+            <tr *ngFor="let item of tradeSearchResult">
+              <!-- <th scope="row">1</th> -->
+              <td>{{item.tradeDate | date:'dd/MM/yyyy'}}</td>
+              <td>{{item.commodity}}</td>
+              <td>{{item.tradeSide}}</td>
+              <td class="text-center">{{item.quantity}}</td>
+              <td>{{item.price | currency:'INR'}}</td>
+              <td>{{item.counterparty}}</td>
+              <td>{{item.location}}</td>
+              <td>
+                <!-- <a (click)="onEdit(item)" class="green mr-1 p-1 border rounded">
+                  <i class="fa fa-pencil"></i>
+                </a> -->
+                <a href="" class="p-1 border rounded border-danger">
+                  <i class="fa fa-trash text-danger"></i>
+                </a>
+              </td>
+            </tr>
+          </tbody>
+          <!--Table body-->
+        </table>
+        <!--Table-->
+
+      </div>
+
+    </div>
+    <div class="col-md-3 mb-0 ml-0 pl-0">
+
+    <app-tradedetails-vw></app-tradedetails-vw>
+    </div>
+  </div>
+</div>

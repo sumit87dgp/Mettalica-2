@@ -1,0 +1,93 @@
+<div class="container mb-3">
+  <div class="card card-body">
+    <form (ngSubmit)="onSearch()" #tradeSearchForm="ngForm">
+      <div class="row">
+        <div class="col-md-2">
+          <p class="h-6 mx-1 my-0 text-white">Trade Date</p>
+          <div class="d-flex flex-row my-0 py-0">
+
+            <div class="md-form form-sm my-0 mx-1 py-0">
+              <!-- ngbDatepicker #f="ngbDatepicker" -->
+              <input type="text" name="fromdate" class="form-control form-control-sm" [(ngModel)]="tradeSearchModel.fromdate"
+               ngbDatepicker #f="ngbDatepicker">
+               <i class="fa fa-calendar fa-pull-right text-white" aria-hidden="true" (click)="f.toggle()"></i>
+              <label for="materialFormCardNameEx" class="font-weight-light">
+
+              </label>
+
+            </div>
+            <div class="md-form form-sm my-0 mx-1 py-0">
+              <input type="text" name="todate" class="form-control form-control-sm" ngbDatepicker #d="ngbDatepicker" [(ngModel)]="tradeSearchModel.todate">
+              <i class="fa fa-calendar fa-pull-right text-white" aria-hidden="true" (click)="d.toggle()"></i>
+              <label for="materialFormCardNameEx" class="font-weight-light">
+
+              </label>
+            </div>
+
+          </div>
+
+        </div>
+        <div class="col-md-2">
+          <p class="h-6 mx-1 my-0 text-white">Commodity</p>
+
+            <div class="md-form form-sm mt-0 mx-0 p-0">
+              <!-- <input type="text" class="form-control form-control-sm"> -->
+              <!-- <ngx-select [items]="items" placeholder="No city selected">
+              </ngx-select> -->
+              <app-ddlselect [options]="items" ></app-ddlselect>
+              <!-- <label for="materialFormCardNameEx" class="font-weight-light">Commodity</label> -->
+            </div>
+
+
+
+
+        </div>
+        <div class="col-md-2">
+          <p class="h-6 mx-1 my-0 text-white">Side</p>
+          <div class="d-flex flex-row my-0 py-0">
+            <div class="form-check form-sm align-self-end ml-1 mr-3">
+              <input class="form-check-input" name="chkBuy" type="checkbox" id="chkBuy" [(ngModel)]="tradeSearchModel.buy" >
+              <label class="form-check-label text-sm text-muted" for="checkbox1">Buy</label>
+            </div>
+            <div class="form-check form-sm align-self-end pt-3">
+              <input class="form-check-input" name="chkSell" type="checkbox" id="chkSell" [(ngModel)]="tradeSearchModel.sell">
+              <label class="form-check-label text-xs text-muted" for="checkbox1">Sell</label>
+            </div>
+
+          </div>
+
+        </div>
+        <div class="col-md-2">
+          <p class="h-6 mx-1 my-0 text-white">Counterparty</p>
+          <div class="d-flex flex-row my-0 py-0">
+            <div class="md-form form-sm my-0 mx-1 py-0">
+              <!-- <input type="text" class="form-control form-control-sm">
+              <label for="materialFormCardNameEx" class="font-weight-light">Counterparty</label> -->
+              <app-ddlselect [options]="items"></app-ddlselect>
+            </div>
+
+          </div>
+        </div>
+        <div class="col-md-2">
+          <p class="h-6 mx-1 my-0 text-white">Location</p>
+          <div class="d-flex flex-row my-0 py-0">
+            <div class="md-form form-sm my-0 mx-1 py-0">
+              <!-- <input type="text" class="form-control form-control-sm">
+              <label for="materialFormCardNameEx" class="font-weight-light">Location</label> -->
+              <app-ddlselect [options]="items"></app-ddlselect>
+            </div>
+
+          </div>
+        </div>
+        <div class="col-md-2  align-self-end">
+          <!-- <p class="h-6 my-0">Your Action</p> -->
+          <div class="d-flex flex-row mx-0 mb-0 py-auto">
+            <input type="submit" class="btn btn-dark-green btn-sm px-2" value="SEARCH">
+            <button class="btn btn-light-green btn-sm px-3">CLEAR</button>
+
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

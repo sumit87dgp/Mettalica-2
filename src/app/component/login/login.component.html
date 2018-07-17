@@ -1,0 +1,63 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 col-sm-12">
+      <p class="text-primary">
+
+      </p>
+
+    </div>
+    <div class="col-md-4 col-sm-12">
+      <!-- Material form login -->
+<!-- Card -->
+<div class="card border">
+
+    <!-- Card body -->
+    <div class="card-body">
+
+        <!-- Material form register -->
+        <form (ngSubmit)="onLoginSubmit(f)" #f="ngForm" >
+            <p class="h4 text-center text-white py-4">Login</p>
+
+
+
+            <!-- Material input email -->
+            <div class="md-form">
+                <i class="fa fa-envelope prefix grey-text"></i>
+                <input type="email" name="email" id="materialFormCardEmailEx" class="form-control" placeholder="Your email" [(ngModel)]="emailId">
+                <label for="materialFormCardEmailEx" class="font-weight-light"></label>
+            </div>
+
+            <!-- Material input password -->
+            <div class="md-form">
+                <i class="fa fa-lock prefix grey-text"></i>
+                <input type="password" name="password" id="materialFormCardPasswordEx" class="form-control" placeholder="Your Password" [(ngModel)]="password">
+                <label for="materialFormCardPasswordEx" class="font-weight-light"></label>
+            </div>
+
+            <div class="text-center py-4 mt-3">
+              <input type="submit" value="Sign In" class="btn btn-primary">
+
+            </div>
+            <div class="d-flex flex-row justify-content-center text-white">
+                <div class="form-check form-sm align-self-end ml-1 mr-3">
+                    <input class="form-check-input" name="chkBuy" type="checkbox" id="chkBuy" [(ngModel)]="rememberMe" >
+                    <label class="form-check-label text-sm text-muted" for="checkbox1">Remember Me</label>
+                  </div>
+                  <div>
+                    <a href="" class="text-secondary">Forgot Password</a>
+                  </div>
+            </div>
+        </form>
+
+        <!-- Material form register -->
+
+    </div>
+    <!-- Card body -->
+
+</div>
+<!-- Card -->
+<!-- Material form login -->
+
+    </div>
+  </div>
+</div>

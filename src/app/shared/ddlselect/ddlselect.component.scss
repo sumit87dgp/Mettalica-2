@@ -1,0 +1,27 @@
+
+
+@import "variables";
+
+
+#inputSelect{
+  padding: 0;
+  margin: 0;
+
+  select{
+    // background: transparent;
+    // border: none;
+    // border-bottom: 1px solid blue;
+    // General Styles
+    transition: $input-transition;
+    outline: none;
+    box-shadow: none;
+    border: none;
+    border-bottom: 1px solid white;
+    border-radius: 0;
+    box-sizing: content-box;
+    background-color: transparent;
+
+    }
+  }
+
+

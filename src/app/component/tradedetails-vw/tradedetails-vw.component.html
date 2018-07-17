@@ -1,0 +1,120 @@
+<div class="card card-body px-2 py-2">
+  <form #tradeEditForm="ngForm" action="" class="mx-0 my-0" >
+    <table class="table table-hover bg-light mx-0 my-0">
+
+      <!--Table head-->
+      <thead class="bg-primary">
+        <tr>
+          <th>
+            <strong> Trade Id : {{tradedetailsVM.id}}</strong>
+            <span class="mr-auto float-right">
+              <a href="" class="mr-1 bg-light p-1 border rounded">
+                <i class="fa fa-pencil"></i>
+              </a>
+              <a href="" class="bg-light p-1 border rounded">
+                <i class="fa fa-trash"></i>
+              </a>
+            </span>
+          </th>
+        </tr>
+      </thead>
+      <tr class="pb-0 mb-0">
+        <td class="pb-0 mb-0">
+          <div class="form-group row px-0 py-0 mb-1">
+            <label for="tradeDate" class="font-weight-light col-form-label col-sm-6 my-0">Trade Date</label>
+            <div class="col-sm-6 ml-0">
+              <div class="md-form form-sm mt-1 mx-0 bg-light d-inline">
+                <input
+                type="text"
+                class="form-control form-control-sm"
+                name="tradeDate"
+                #vtradeDate="ngModel"
+                [ngClass]="{'is-invalid':vtradeDate.errors &&
+                vtradeDate.touched}"
+                [(ngModel)]="tradedetailsVM.tradeDate"
+                minlength="2"
+                required
+                >
+                <span [hidden]="!vtradeDate.errors?.required" class="invalid-feedback text-danger">* <small>Required</small> </span>
+              </div>
+
+
+            </div>
+
+          </div>
+
+
+          <div class="form-group row px-0 py-0 mb-1">
+            <label for="materialFormCardNameEx" class="font-weight-light  col-form-label col-sm-6 my-0">Commodity</label>
+            <div class="col-sm-6 ml-0">
+              <div class="md-form form-sm mt-1 mx-0 bg-light">
+                <input type="text" class="form-control form-control-sm ">
+
+              </div>
+
+            </div>
+
+          </div>
+          <div class="form-group row px-0 py-0 mb-1">
+            <label for="materialFormCardNameEx" class="font-weight-light  col-form-label col-sm-6 my-0">Trade Side</label>
+            <div class="col-sm-6 ml-0">
+              <div class="md-form form-sm mt-1 mx-0 bg-light">
+                <input type="text" class="form-control form-control-sm ">
+
+              </div>
+
+            </div>
+
+          </div>
+          <div class="form-group row px-0 py-0 mb-1">
+              <label for="materialFormCardNameEx" class="font-weight-light  col-form-label col-sm-6 my-0">Counterparty</label>
+              <div class="col-sm-6 ml-0">
+                <div class="md-form form-sm mt-1 mx-0 bg-light">
+                  <input type="text" class="form-control form-control-sm ">
+
+                </div>
+
+              </div>
+
+            </div>
+            <div class="form-group row px-0 py-0 mb-1">
+                <label for="materialFormCardNameEx" class="font-weight-light  col-form-label col-sm-6 my-0">Quantity</label>
+                <div class="col-sm-6 ml-0">
+                  <div class="md-form form-sm mt-1 mx-0 bg-light">
+                    <input type="text" class="form-control form-control-sm ">
+
+                  </div>
+
+                </div>
+
+              </div>
+              <div class="form-group row px-0 py-0 mb-1">
+                  <label for="materialFormCardNameEx" class="font-weight-light  col-form-label col-sm-6 my-0">Price</label>
+                  <div class="col-sm-6 ml-0">
+                    <div class="md-form form-sm mt-1 mx-0 bg-light">
+                      <input type="text" class="form-control form-control-sm ">
+
+                    </div>
+
+                  </div>
+
+                </div>
+                <div class="form-group row px-0 py-0 mb-1">
+                    <label for="materialFormCardNameEx" class="font-weight-light  col-form-label col-sm-6 my-0">Commodity</label>
+                    <div class="col-sm-6 ml-0">
+                      <div class="md-form form-sm mt-1 mx-0 bg-light">
+                        <input type="text" class="form-control form-control-sm ">
+
+                      </div>
+
+                    </div>
+
+                  </div>
+        </td>
+      </tr>
+    </table>
+
+
+  </form>
+
+</div>
