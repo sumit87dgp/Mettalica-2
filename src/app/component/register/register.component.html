@@ -1,64 +1,100 @@
 <div class="container">
-  <div class="row">
-    <div class="col-md-8 col-sm-12">
-      <p class="text-primary">
-
-      </p>
-
-    </div>
-    <div class="col-md-4 col-sm-12">
+  <div class="row justify-content-md-center">
+    <div class="col-md-8">
       <!-- Material form login -->
-<!-- Card -->
-<div class="card border">
+      <!-- Card -->
+      <div class="card border">
 
-    <!-- Card body -->
-    <div class="card-body">
+        <!-- Card body -->
+        <div class="card-body px-5">
 
-        <!-- Material form register -->
-        <form>
+          <!-- Material form register -->
+          <form (ngSubmit)="onSubmit()" #regForm="ngForm">
             <p class="h4 text-center text-white py-4">Sign up</p>
+
+            <div class="row">
+              <div class="col-md-6 col-sm-12">
+                <div class="md-form">
+                  <i class="fa fa-user prefix grey-text"></i>
+                  <input type="text" name="firstName" id="firstName" class="form-control" placeholder="First Name"
+                  ngModel
+                  required
+                  minlength="3"
+                  >
+
+                </div>
+              </div>
+              <div class="col-md-6 col-sm-12">
+                <div class="md-form">
+                  <i class="fa fa-user prefix grey-text"></i>
+                  <input type="text" name="lastName" id="lastName"
+                  class="form-control" placeholder="Last Name"
+                  ngModel
+                  required
+                  minlength="3">
+
+                </div>
+              </div>
+            </div>
+
+
 
             <!-- Material input text -->
             <div class="md-form">
-                <i class="fa fa-user prefix grey-text"></i>
-                <input type="text" id="materialFormCardNameEx" class="form-control">
-                <label for="materialFormCardNameEx" class="font-weight-light">Your name</label>
+              <i class="fa fa-envelope prefix grey-text"></i>
+              <input type="email" name="email" id="email" class="form-control" placeholder="Email"
+              ngModel
+              >
             </div>
 
-            <!-- Material input email -->
-            <div class="md-form">
-                <i class="fa fa-envelope prefix grey-text"></i>
-                <input type="email" id="materialFormCardEmailEx" class="form-control">
-                <label for="materialFormCardEmailEx" class="font-weight-light">Your email</label>
+
+
+            <div class="row">
+                <div class="col-sm-12">
+                  <!-- Material input email -->
+                  <div class="md-form">
+                    <i class="fa fa-envelope fa-exclamation prefix grey-text"></i>
+                    <input type="email" id="txtconfirmemail" name="confirmemail" class="form-control" placeholder="Confirm Email"
+                    ngModel
+                    >
+
+                  </div>
+
+                </div>
+              </div>
+
+              <div class="row">
+                  <div class="col-md-6 col-sm-12">
+                    <div class="md-form">
+                      <i class="fa fa-phone prefix grey-text"></i>
+                      <input type="text" name="phoneNumber" id="txtPhoneNumber" class="form-control" placeholder="Phone Number" ngModel>
+
+                    </div>
+                  </div>
+                  <div class="col-md-6 col-sm-12">
+                    <div class="md-form">
+                      <i class="fa fa-calendar prefix grey-text"></i>
+                      <input type="text" name="dob" id="txtDOB" class="form-control"
+                      placeholder="Date Of Birth"
+                      ngModel
+                      >
+
+                    </div>
+                  </div>
+                </div>
+
+            <div class="text-center py-2">
+              <button class="btn btn-cyan" type="submit">Register</button>
             </div>
+          </form>
+          <!-- Material form register -->
 
-            <!-- Material input email -->
-            <div class="md-form">
-                <i class="fa fa-exclamation-triangle prefix grey-text"></i>
-                <input type="email" id="materialFormCardConfirmEx" class="form-control">
-                <label for="materialFormCardConfirmEx" class="font-weight-light">Confirm your email</label>
-            </div>
+        </div>
+        <!-- Card body -->
 
-            <!-- Material input password -->
-            <div class="md-form">
-                <i class="fa fa-lock prefix grey-text"></i>
-                <input type="password" id="materialFormCardPasswordEx" class="form-control">
-                <label for="materialFormCardPasswordEx" class="font-weight-light">Your password</label>
-            </div>
-
-            <div class="text-center py-4 mt-3">
-                <button class="btn btn-cyan" type="submit">Register</button>
-            </div>
-        </form>
-        <!-- Material form register -->
-
-    </div>
-    <!-- Card body -->
-
-</div>
-<!-- Card -->
-<!-- Material form login -->
-
+      </div>
+      <!-- Card -->
+      <!-- Material form login -->
     </div>
   </div>
 </div>
