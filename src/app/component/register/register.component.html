@@ -20,19 +20,24 @@
                   ngModel
                   required
                   minlength="3"
+                  #fname="ngModel"
                   >
-
+                  <span class="text-warning" *ngIf="!fname.valid && fname.touched" >First name is required</span>
                 </div>
+
               </div>
               <div class="col-md-6 col-sm-12">
                 <div class="md-form">
                   <i class="fa fa-user prefix grey-text"></i>
                   <input type="text" name="lastName" id="lastName"
-                  class="form-control" placeholder="Last Name"
+                  class="form-control"
+                  placeholder="Last Name"
                   ngModel
                   required
-                  minlength="3">
-
+                  minlength="3"
+                  #lname="ngModel"
+                  >
+                  <span class="text-warning" *ngIf="!lname.valid && lname.touched" >Last name is required</span>
                 </div>
               </div>
             </div>
@@ -42,49 +47,53 @@
             <!-- Material input text -->
             <div class="md-form">
               <i class="fa fa-envelope prefix grey-text"></i>
-              <input type="email" name="email" id="email" class="form-control" placeholder="Email"
-              ngModel
+              <input type="email" name="email" id="email"
+              class="form-control"
+              placeholder="Email"
+              ngModel required email
+              #email="ngModel"
               >
+              <span class="text-warning" *ngIf="!email.valid && email.touched" >Email is required</span>
             </div>
 
 
 
             <div class="row">
-                <div class="col-sm-12">
-                  <!-- Material input email -->
-                  <div class="md-form">
-                    <i class="fa fa-envelope fa-exclamation prefix grey-text"></i>
-                    <input type="email" id="txtconfirmemail" name="confirmemail" class="form-control" placeholder="Confirm Email"
-                    ngModel
-                    >
+              <div class="col-sm-12">
+                <!-- Material input email -->
+                <div class="md-form">
+                  <i class="fa fa-envelope fa-exclamation prefix grey-text"></i>
+                  <input type="email" id="txtconfirmemail" name="confirmemail" class="form-control" placeholder="Confirm Email"
+                  ngModel
+                  required
+                  #cnfemail="ngModel"
+                  >
+                  <span class="text-warning" *ngIf="!cnfemail.valid && cnfemail.touched">Re-type your email</span>
+                  <span class="text-warning" *ngIf="cnfemail.valid && cnfemail.touched && (email.value!=cnfemail.value)" >Email does not match</span>
+                </div>
 
-                  </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-6 col-sm-12">
+                <div class="md-form">
+                  <i class="fa fa-phone prefix grey-text"></i>
+                  <input type="text" name="phoneNumber" id="txtPhoneNumber" class="form-control" placeholder="Phone Number" ngModel required>
 
                 </div>
               </div>
-
-              <div class="row">
-                  <div class="col-md-6 col-sm-12">
-                    <div class="md-form">
-                      <i class="fa fa-phone prefix grey-text"></i>
-                      <input type="text" name="phoneNumber" id="txtPhoneNumber" class="form-control" placeholder="Phone Number" ngModel>
-
-                    </div>
-                  </div>
-                  <div class="col-md-6 col-sm-12">
-                    <div class="md-form">
-                      <i class="fa fa-calendar prefix grey-text"></i>
-                      <input type="text" name="dob" id="txtDOB" class="form-control"
-                      placeholder="Date Of Birth"
-                      ngModel
-                      >
-
-                    </div>
-                  </div>
+              <div class="col-md-6 col-sm-12">
+                <div class="md-form">
+                    <i class="fa fa-calendar prefix grey-text" (click)="dob.toggle()"></i>
+                  <input type="text" name="dob" id="txtDOB" class="form-control" placeholder="Date Of Birth" ngModel required ngbDatepicker
+                    #dob="ngbDatepicker">
                 </div>
+              </div>
+            </div>
 
             <div class="text-center py-2">
-              <button class="btn btn-cyan" type="submit">Register</button>
+              <button class="btn btn-cyan" type="submit" [disabled]="!regForm.valid ||(email.value!=cnfemail.value)" >Register</button>
             </div>
           </form>
           <!-- Material form register -->
