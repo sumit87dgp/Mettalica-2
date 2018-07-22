@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { UserService } from '../../services/user.service';
 import { UserVM } from '../../models/userVM';
 import { NgForm } from '../../../../node_modules/@angular/forms';
+import { Routes, Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -10,6 +11,7 @@ import { NgForm } from '../../../../node_modules/@angular/forms';
 })
 export class LoginComponent implements OnInit {
 
+  route: Routes;
   emailId: string;
   password: string;
   rememberMe: boolean;
@@ -17,7 +19,7 @@ export class LoginComponent implements OnInit {
 
   @ViewChild('f') signupForm: NgForm;
 
-  constructor(private usrService: UserService) {
+  constructor(private usrService: UserService, private router: Router) {
     this.rememberMe = true;
   }
 
@@ -33,14 +35,14 @@ export class LoginComponent implements OnInit {
 
 
   // Getting form with @ViewChild
-  onLoginSubmit(): void {
+  onLoginSubmit(returnurl): void {
     console.log(this.signupForm);
     this.emailId = this.signupForm.form.value.email;
     this.password = this.signupForm.form.value.password;
     this.rememberMe = this.signupForm.form.value.rememberMe;
     this.loggedInUser = this.usrService.Authenticate(this.emailId, this.password);
-    console.log(this.loggedInUser);
-  }
+    this.router.navigate(['/']);
+    }
 
 
 

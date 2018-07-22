@@ -1,10 +1,11 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NavigationComponent } from './navigation/navigation.component';
 import { TradeSearchComponent } from './component/trade-search/trade-search.component';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+
 // For form dropdowns
 import { NgxSelectModule } from 'ngx-select-ex';
 
@@ -15,6 +16,9 @@ import { AppRoutingModule } from './/app-routing.module';
 import { TradesearchVwComponent } from './component/tradesearch-vw/tradesearch-vw.component';
 import { TradedetailsVwComponent } from './component/tradedetails-vw/tradedetails-vw.component';
 import { DdlselectComponent } from './shared/ddlselect/ddlselect.component';
+import { TradeEditOrCreateComponent } from './component/trade-edit-or-create/trade-edit-or-create.component';
+import { HomeComponent } from './component/home/home.component';
+
 
 
 @NgModule({
@@ -26,10 +30,13 @@ import { DdlselectComponent } from './shared/ddlselect/ddlselect.component';
     RegisterComponent,
     TradesearchVwComponent,
     TradedetailsVwComponent,
-    DdlselectComponent],
+    DdlselectComponent,
+    TradeEditOrCreateComponent,
+    HomeComponent],
   imports: [
     BrowserModule,
     FormsModule,
+    ReactiveFormsModule,
     MDBBootstrapModule.forRoot(),
     NgbModule.forRoot(),
     AppRoutingModule,
