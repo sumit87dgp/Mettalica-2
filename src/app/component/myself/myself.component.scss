@@ -1,0 +1,24 @@
+$bgtransparent:transparent;
+
+// .loggedInUser {
+//   background: $bgtransparent;
+//   font-size: 1.5em;
+// }
+
+// .my-custom-class {
+//   background: transparent;
+// }
+
+// .popover-header {
+//   color: black;
+// }
+
+.userbutton{
+  background: $bgtransparent;
+  margin: 0;
+  padding: 0;
+
+  .fa{
+    font-size: 2.0em;
+  }
+}

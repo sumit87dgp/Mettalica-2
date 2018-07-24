@@ -13,16 +13,16 @@
   <links class="text-white">
     <ul class="navbar-nav ml-auto">
       <li class="nav-item active">
-        <a class="nav-link">Home
-          <span class="sr-only">(current)</span>
+        <a class="nav-link" *ngIf="!isUserLoggedIn;then login else userdetails">
+
         </a>
       </li>
-      <li class="nav-item">
+      <!-- <li class="nav-item">
         <a class="nav-link waves-light" mdbWavesEffect>Features</a>
       </li>
       <li class="nav-item">
         <a class="nav-link waves-light" mdbWavesEffect>Pricing</a>
-      </li>
+      </li> -->
 
       <!-- Dropdown -->
       <!-- <li class="nav-item dropdown" dropdown>
@@ -43,3 +43,11 @@
   </links>
 <hr>
 </mdb-navbar>
+
+<ng-template #login>
+  <a class="nav-link" routerLink="/login" class="text-white">Login</a>
+</ng-template>
+<ng-template #userdetails>
+  <app-myself ></app-myself>
+  <span class="sr-only">(current)</span>
+</ng-template>

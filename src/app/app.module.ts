@@ -18,6 +18,7 @@ import { TradedetailsVwComponent } from './component/tradedetails-vw/tradedetail
 import { DdlselectComponent } from './shared/ddlselect/ddlselect.component';
 import { TradeEditOrCreateComponent } from './component/trade-edit-or-create/trade-edit-or-create.component';
 import { HomeComponent } from './component/home/home.component';
+import { MyselfComponent } from './component/myself/myself.component';
 
 
 
@@ -32,7 +33,8 @@ import { HomeComponent } from './component/home/home.component';
     TradedetailsVwComponent,
     DdlselectComponent,
     TradeEditOrCreateComponent,
-    HomeComponent],
+    HomeComponent,
+    MyselfComponent],
   imports: [
     BrowserModule,
     FormsModule,

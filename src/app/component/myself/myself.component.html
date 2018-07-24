@@ -1,0 +1,10 @@
+
+<ng-template #popContent>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">Preferences</li>
+    <li class="list-group-item">LogOut</li>
+  </ul>
+</ng-template>
+<button class="btn userbutton"  [ngbPopover]="popContent" popoverClass="popover-header"  placement="bottom" popoverTitle="Settings">
+    <i class="fa fa-user" ></i>
+</button>
