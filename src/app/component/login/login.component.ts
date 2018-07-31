@@ -20,7 +20,7 @@ export class LoginComponent implements OnInit {
   @ViewChild('f') signupForm: NgForm;
 
   constructor(private usrService: UserService, private router: Router) {
-    this.rememberMe = true;
+
   }
 
   ngOnInit() {
@@ -42,7 +42,7 @@ export class LoginComponent implements OnInit {
     this.rememberMe = this.signupForm.form.value.rememberMe;
     this.loggedInUser = this.usrService.Authenticate(this.emailId, this.password);
     this.router.navigate(['/']);
-    }
+  }
 
 
 

@@ -5,6 +5,7 @@ import { NavigationComponent } from './navigation/navigation.component';
 import { TradeSearchComponent } from './component/trade-search/trade-search.component';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { HttpClientModule } from '@angular/common/http'
 
 // For form dropdowns
 import { NgxSelectModule } from 'ngx-select-ex';
@@ -19,6 +20,7 @@ import { DdlselectComponent } from './shared/ddlselect/ddlselect.component';
 import { TradeEditOrCreateComponent } from './component/trade-edit-or-create/trade-edit-or-create.component';
 import { HomeComponent } from './component/home/home.component';
 import { MyselfComponent } from './component/myself/myself.component';
+import { MyhighlighterDirective } from './shared/myhighlighter.directive';
 
 
 
@@ -34,7 +36,8 @@ import { MyselfComponent } from './component/myself/myself.component';
     DdlselectComponent,
     TradeEditOrCreateComponent,
     HomeComponent,
-    MyselfComponent],
+    MyselfComponent,
+    MyhighlighterDirective],
   imports: [
     BrowserModule,
     FormsModule,
@@ -42,7 +45,8 @@ import { MyselfComponent } from './component/myself/myself.component';
     MDBBootstrapModule.forRoot(),
     NgbModule.forRoot(),
     AppRoutingModule,
-    NgxSelectModule
+    NgxSelectModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

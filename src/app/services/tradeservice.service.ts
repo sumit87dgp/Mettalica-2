@@ -1,108 +1,24 @@
 import { Injectable } from '@angular/core';
 import { TradeSearchVM } from '../models/tradesearchVM';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TradeserviceService {
   filteredTradeSearchResult: TradeSearchVM[];
-  constructor() {
-    this.filteredTradeSearchResult = [
-      {
-        id: '32131-432423',
-        tradeDate: new Date(),
-        commodity: 'commodity1',
-        tradeSide: 'buy',
-        quantity: 2,
-        price: 2132.5,
-        counterparty: 'LA Metals',
-        location: 'Los Angeles'
-      },
-      {
-        id: '32131-432423',
-        tradeDate: new Date(),
-        commodity: 'commodity1',
-        tradeSide: 'buy',
-        quantity: 2,
-        price: 2132.5,
-        counterparty: 'LA Metals',
-        location: 'Los Angeles'
-      },
-      {
-        id: '32131-432423',
-        tradeDate: new Date(),
-        commodity: 'commodity1',
-        tradeSide: 'buy',
-        quantity: 2,
-        price: 2132.5,
-        counterparty: 'LA Metals',
-        location: 'Los Angeles'
-      },
-      {
-        id: '32131-432423',
-        tradeDate: new Date(),
-        commodity: 'commodity1',
-        tradeSide: 'buy',
-        quantity: 2,
-        price: 2132.5,
-        counterparty: 'LA Metals',
-        location: 'Los Angeles'
-      },
-      {
-        id: '32131-432423',
-        tradeDate: new Date(),
-        commodity: 'commodity1',
-        tradeSide: 'buy',
-        quantity: 2,
-        price: 2132.5,
-        counterparty: 'LA Metals',
-        location: 'Los Angeles'
-      },
-      {
-        id: '32131-432423',
-        tradeDate: new Date(),
-        commodity: 'commodity1',
-        tradeSide: 'buy',
-        quantity: 2,
-        price: 2132.5,
-        counterparty: 'LA Metals',
-        location: 'Los Angeles'
-      },
-      {
-        id: '32131-432423',
-        tradeDate: new Date(),
-        commodity: 'commodity1',
-        tradeSide: 'buy',
-        quantity: 2,
-        price: 2132.5,
-        counterparty: 'LA Metals',
-        location: 'Los Angeles'
-      },
-      {
-        id: '32131-432423',
-        tradeDate: new Date(),
-        commodity: 'commodity1',
-        tradeSide: 'buy',
-        quantity: 2,
-        price: 2132.5,
-        counterparty: 'LA Metals',
-        location: 'Los Angeles'
-      },
-      {
-        id: '32131-432423',
-        tradeDate: new Date(),
-        commodity: 'commodity1',
-        tradeSide: 'buy',
-        quantity: 2,
-        price: 2132.5,
-        counterparty: 'LA Metals',
-        location: 'Los Angeles'
-      }
+  constructor(private http: HttpClient) {
+    // this.filteredTradeSearchResult = [
 
-    ];
+    // ];
   }
 
   getfilteredorAll(): TradeSearchVM[] {
+    // return this.filteredTradeSearchResult;
+    this.http.get<{ message: string, tradelist: TradeSearchVM[] }>('http://localhost:3000/api/trades')
+      .subscribe((resdata) => {
+        this.filteredTradeSearchResult = resdata.tradelist;
+      });
     return this.filteredTradeSearchResult;
   }
   editTradeItem(tradeItem: TradeSearchVM) {
