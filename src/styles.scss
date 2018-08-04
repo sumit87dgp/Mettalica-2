@@ -23,7 +23,7 @@ body{
     top:0;
     left:0;
     width: 100%;
-    height: inherit;
+    min-height: 100%
   }
   .navbar-overlay{
     background-color: rgba(27, 43, 23, 0.753);

@@ -3,9 +3,9 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NavigationComponent } from './navigation/navigation.component';
 import { TradeSearchComponent } from './component/trade-search/trade-search.component';
-import { MDBBootstrapModule } from 'angular-bootstrap-md';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { HttpClientModule } from '@angular/common/http'
+// import { MDBBootstrapModule } from 'angular-bootstrap-md';
+// import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { HttpClientModule } from '@angular/common/http';
 
 // For form dropdowns
 import { NgxSelectModule } from 'ngx-select-ex';
@@ -21,6 +21,7 @@ import { TradeEditOrCreateComponent } from './component/trade-edit-or-create/tra
 import { HomeComponent } from './component/home/home.component';
 import { MyselfComponent } from './component/myself/myself.component';
 import { MyhighlighterDirective } from './shared/myhighlighter.directive';
+import { SubnavigationComponent } from './component/subnavigation/subnavigation.component';
 
 
 
@@ -37,13 +38,12 @@ import { MyhighlighterDirective } from './shared/myhighlighter.directive';
     TradeEditOrCreateComponent,
     HomeComponent,
     MyselfComponent,
-    MyhighlighterDirective],
+    MyhighlighterDirective,
+    SubnavigationComponent],
   imports: [
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
-    MDBBootstrapModule.forRoot(),
-    NgbModule.forRoot(),
     AppRoutingModule,
     NgxSelectModule,
     HttpClientModule
