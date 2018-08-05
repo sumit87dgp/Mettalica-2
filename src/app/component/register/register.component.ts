@@ -11,13 +11,17 @@ export class RegisterComponent implements OnInit {
 
   @ViewChild('regForm') registrationform: NgForm;
 
+  submitted: boolean;
+
   newUser: UserVM;
   constructor() { }
 
   ngOnInit() {
+    this.submitted = false;
   }
-  onSubmit(form: any) {
+  onSubmit() {
     console.log(this.registrationform);
+    this.submitted = true;
   }
 
 }

@@ -3,8 +3,8 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NavigationComponent } from './navigation/navigation.component';
 import { TradeSearchComponent } from './component/trade-search/trade-search.component';
-// import { MDBBootstrapModule } from 'angular-bootstrap-md';
-// import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { MDBBootstrapModule } from 'angular-bootstrap-md';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HttpClientModule } from '@angular/common/http';
 
 // For form dropdowns
@@ -46,7 +46,9 @@ import { SubnavigationComponent } from './component/subnavigation/subnavigation.
     ReactiveFormsModule,
     AppRoutingModule,
     NgxSelectModule,
-    HttpClientModule
+    HttpClientModule,
+    MDBBootstrapModule.forRoot(),
+    NgbModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

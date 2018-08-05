@@ -1,9 +1,4 @@
-<section id="inputSelect">
-  <div class="m-0 p-0">
-      <!-- <label for="exampleFormControlSelect1">Example select</label> -->
-      <select class="form-control form-control-sm pt-0 pb-1"
-      id="exampleFormControlSelect1" (change)="OnItemChange($event)">
-        <option *ngFor='let item of options' value="{{item}}">{{item}}</option>
-      </select>
-  </div>
-</section>
+<!-- <label for="exampleFormControlSelect1">Example select</label> -->
+<select class="form-control form-control-sm" id="exampleFormControlSelect1" (change)="OnItemChange($event)">
+<option *ngFor='let item of options' value="{{item}}">{{item}}</option>
+</select>

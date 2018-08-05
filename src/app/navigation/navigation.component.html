@@ -1,53 +1,18 @@
-<!-- <nav class="navbar navbar-expand-sm navbar-dark fixed-top">
+<nav class="navbar navbar-expand-sm navbar-dark bg-dark mb-3">
   <div class="container">
-    Working
-  </div>
-</nav> -->
-<mdb-navbar SideClass="navbar navbar-expand-md border border-left-0 border-right-0 mb-5">
-    <!-- <mdb-navbar SideClass="navbar navbar-expand-md mb-5" class="navbar-overlay"> -->
-  <logo>
-    <a href="" class="navbar-brand text-white">
-      Mettalica
-    </a>
-  </logo>
-  <links class="text-white">
+    <a href="" class="navbar-brand">Mettalica</a>
     <ul class="navbar-nav ml-auto">
-      <li class="nav-item active">
-        <a class="nav-link" *ngIf="!isUserLoggedIn;then login else userdetails">
-
-        </a>
-      </li>
-      <!-- <li class="nav-item">
-        <a class="nav-link waves-light" mdbWavesEffect>Features</a>
-      </li>
       <li class="nav-item">
-        <a class="nav-link waves-light" mdbWavesEffect>Pricing</a>
-      </li> -->
-
-      <!-- Dropdown -->
-      <!-- <li class="nav-item dropdown" dropdown>
-        <a dropdownToggle mdbWavesEffect type="button" class="nav-link dropdown-toggle waves-light" mdbWavesEffect>
-          Basic dropdown
-          <span class="caret"></span>
-        </a>
-        <div *dropdownMenu class="dropdown-menu dropdown dropdown-primary" role="menu">
-          <a class="dropdown-item waves-light" mdbWavesEffect href="#">Action</a>
-          <a class="dropdown-item waves-light" mdbWavesEffect href="#">Another action</a>
-          <a class="dropdown-item waves-light" mdbWavesEffect href="#">Something else here</a>
-          <div class="divider dropdown-divider"></div>
-          <a class="dropdown-item waves-light" mdbWavesEffect href="#">Separated link</a>
-        </div>
-      </li> -->
-
+          <a class="nav-link" *ngIf="!isUserLoggedIn;then login else userdetails"></a>
+      </li>
     </ul>
-  </links>
-<hr>
-</mdb-navbar>
+  </div>
+</nav>
 
 <ng-template #login>
-  <a class="nav-link" routerLink="/login" class="text-white">Login</a>
-</ng-template>
-<ng-template #userdetails>
-  <app-myself ></app-myself>
-  <span class="sr-only">(current)</span>
-</ng-template>
+    <a class="nav-link" routerLink="/login" class="text-white">Login</a>
+  </ng-template>
+  <ng-template #userdetails>
+    <app-myself ></app-myself>
+    <span class="sr-only">(current)</span>
+  </ng-template>
