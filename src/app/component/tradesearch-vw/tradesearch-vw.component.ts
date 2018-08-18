@@ -14,7 +14,11 @@ export class TradesearchVwComponent implements OnInit {
   constructor(private tradeService: TradeserviceService) { }
 
   ngOnInit() {
-    this.tradeSearchResult = this.tradeService.getfilteredorAll();
+    this.tradeService.getfilteredorAll();
+    this.tradeService.getTradeListUpdateListner().subscribe((tradelist: TradeSearchVM[]) => {
+      this.tradeSearchResult = tradelist;
+    });
+    // this.tradeSearchResult = this.tradeService.getfilteredorAll();
   }
 
   onEdit(tradeItem: TradeSearchVM) {

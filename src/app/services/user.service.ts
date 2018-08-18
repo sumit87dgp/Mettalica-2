@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 import { UserVM } from '../models/userVM';
 
 @Injectable({
@@ -8,7 +9,7 @@ export class UserService {
 
   user: UserVM;
 
-  constructor() { }
+  constructor(private httpClient: HttpClient) { }
 
 
   Authenticate(email: string, password: string): UserVM {
@@ -20,8 +21,8 @@ export class UserService {
     return this.GenerateUser();
   }
 
-  AddNewUser(user: UserVM): boolean {
-    return true;
+  AddNewUser(user: UserVM) {
+    return this.httpClient.post<{ message: string }>('http://localhost:3000/api/users', user);
   }
 
   private GenerateUser(): UserVM {

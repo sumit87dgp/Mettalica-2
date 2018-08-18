@@ -2,14 +2,14 @@
   <div class="row justify-content-md-center mt-5">
     <div class="col-md-8">
 
-        <div class="card text-center" *ngIf="submitted">
-            <div class="card-body">
-              <h3 class="card-title text-success">Congratulation!!</h3>
-              <p class="card-text">You have successfully registered your account</p>
-              <a routerLink="/login" class="btn btn-primary">Login</a>
-            </div>
+      <div class="card text-center" *ngIf="submitted">
+        <div class="card-body">
+          <h3 class="card-title text-success">Congratulation!!</h3>
+          <p class="card-text">You have successfully registered your account</p>
+          <a routerLink="/login" class="btn btn-primary">Login</a>
+        </div>
 
-          </div>
+      </div>
       <!-- Material form login -->
       <!-- Card -->
       <div class="card border" *ngIf="!submitted">
@@ -18,14 +18,15 @@
         <div class="card-body px-5">
 
 
-          <form (ngSubmit)="onSubmit()" #regForm="ngForm">
+          <form (ngSubmit)="onSubmit(regForm)" #regForm="ngForm">
             <p class="h4 text-center py-4">Sign up</p>
             <div class="row">
               <div class="col-sm-12 col-md-6">
                 <div class="form-group">
                   <label for="firstname">FirstName</label>
-                  <input type="text" name="firstname" class="form-control" placeholder="FirstName" ngModel required #fn="ngModel">
-                  <span class="text-muted small" *ngIf="!fn.valid && fn.touched">FirstName is required</span>
+                  <!-- -->
+                  <input type="text" ngModel name="firstname" class="form-control" placeholder="FirstName" required #fn="ngModel">
+                  <!-- <span class="text-muted small" *ngIf="!fn.valid && fn.touched">FirstName is required</span> -->
                 </div>
               </div>
               <div class="col-sm-12 col-md-6">
@@ -50,9 +51,9 @@
             <div class="row">
               <div class="col-12">
                 <div class="form-group">
-                  <label for="confirmemail">Confirm Email Id</label>
-                  <input type="email" name="confirmemail" class="form-control" placeholder="Confirm Email" ngModel required #cnfemail="ngModel">
-                  <span class="text-muted small" *ngIf="!cnfemail.valid && cnfemail.touched">Email do not match</span>
+                  <label for="Password">Password</label>
+                  <input type="password" name="password" class="form-control" placeholder="Password" ngModel required #password="ngModel">
+                  <span class="text-muted small" *ngIf="!password.valid && password.touched">Password is required</span>
                 </div>
 
               </div>
@@ -91,6 +92,7 @@
             <div class="row">
               <div class="col-12">
                 <div class="form-group">
+                  <!--  -->
                   <button type="submit" class="btn btn-block btn-primary" [disabled]="!regForm.valid">Register</button>
                 </div>
 
@@ -109,7 +111,3 @@
     </div>
   </div>
 </div>
-
-
-
-
