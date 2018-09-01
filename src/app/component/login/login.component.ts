@@ -17,7 +17,6 @@ export class LoginComponent implements OnInit {
   rememberMe: boolean;
   loggedInUser: UserVM;
 
-  // @ViewChild('f') signupForm: NgForm;
 
   constructor(private usrService: UserService, private router: Router) {
 
@@ -26,23 +25,11 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
   }
 
-  // Directly getting the form
-  // onLoginSubmit(form: NgForm): void {
-  //   console.log(form);
-  //   this.usrService.Authenticate('user', 'pass');
-  //   event.preventDefault();
-  // }
-
-
-  // Getting form with @ViewChild
   onLoginSubmit(signInform: NgForm): void {
-    // console.log(this.signupForm);
-    // this.emailId = this.signupForm.form.value.email;
-    // this.password = this.signupForm.form.value.password;
-    // this.rememberMe = this.signupForm.form.value.rememberMe;
+
     if (signInform.valid) {
       this.usrService.Authenticate(signInform.value.emailId, signInform.value.password);
-      // this.router.navigate(['/']);
+
     }
 
   }

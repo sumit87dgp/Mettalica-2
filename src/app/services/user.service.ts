@@ -10,9 +10,14 @@ import { Router } from '@angular/router';
 export class UserService {
 
   user: UserVM;
+  IsUserAuthenticated = false;
 
   constructor(private httpClient: HttpClient, private router: Router) { }
 
+
+  getIsUserAuthenticated(): boolean {
+    return this.IsUserAuthenticated;
+  }
 
   Authenticate(email: string, password: string) {
     const authdata: AuthData = { emailId: email, password: password };
@@ -20,6 +25,7 @@ export class UserService {
       .subscribe(responsedata => {
         const token = responsedata.token;
         if (token) {
+          this.IsUserAuthenticated = true;
           this.router.navigate(['/']);
         }
 
