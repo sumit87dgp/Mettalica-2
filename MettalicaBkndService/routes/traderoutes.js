@@ -35,7 +35,17 @@ router.post('', (req, res, next) => {
 
 router.get('', (req, res, next) => {
   const trades = [{
-      id: '32131-432423',
+      id: '32131-432421',
+      tradeDate: new Date(),
+      commodity: 'commodity1',
+      tradeSide: 'sell',
+      quantity: 2,
+      price: 2132.5,
+      counterparty: 'LA Metals',
+      location: 'Los Angeles'
+    },
+    {
+      id: '32131-432422',
       tradeDate: new Date(),
       commodity: 'commodity1',
       tradeSide: 'buy',
@@ -47,7 +57,7 @@ router.get('', (req, res, next) => {
     {
       id: '32131-432423',
       tradeDate: new Date(),
-      commodity: 'commodity1',
+      commodity: 'commodity3',
       tradeSide: 'buy',
       quantity: 2,
       price: 2132.5,
@@ -55,19 +65,9 @@ router.get('', (req, res, next) => {
       location: 'Los Angeles'
     },
     {
-      id: '32131-432423',
+      id: '32131-432424',
       tradeDate: new Date(),
-      commodity: 'commodity1',
-      tradeSide: 'buy',
-      quantity: 2,
-      price: 2132.5,
-      counterparty: 'LA Metals',
-      location: 'Los Angeles'
-    },
-    {
-      id: '32131-432423',
-      tradeDate: new Date(),
-      commodity: 'commodity1',
+      commodity: 'commodity4',
       tradeSide: 'buy',
       quantity: 2,
       price: 2132.5,

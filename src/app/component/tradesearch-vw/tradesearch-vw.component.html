@@ -22,7 +22,7 @@
 
           <!--Table body-->
           <tbody>
-            <tr *ngFor="let item of tradeSearchResult">
+            <tr *ngFor="let item of tradeSearchResult" (click)="editTradeDetails(item)" >
               <!-- <th scope="row">1</th> -->
               <td>{{item.tradeDate | date:'dd/MM/yyyy'}}</td>
               <td>{{item.commodity}}</td>

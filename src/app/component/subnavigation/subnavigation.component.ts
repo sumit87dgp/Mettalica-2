@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter } from '@angular/core';
+import { ComponentInteractionService } from '../../services/shared/componentInteraction.service';
+
 
 @Component({
   selector: 'app-subnavigation',
@@ -7,9 +9,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SubnavigationComponent implements OnInit {
 
-  constructor() { }
+  mode: string;
+  constructor(private cissrv: ComponentInteractionService) { }
 
   ngOnInit() {
+    this.cissrv.gettrademodeListener().subscribe((formmode) => {
+      this.mode = formmode;
+    });
+  }
+
+  addtrade() {
+    this.cissrv.changeMode('addnew');
   }
 
 }

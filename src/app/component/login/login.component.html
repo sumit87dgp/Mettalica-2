@@ -7,75 +7,43 @@
     </div>
     <div class="col-md-4 col-sm-12">
       <!-- Material form login -->
-<!-- Card -->
-<div class="card border">
+      <!-- Card -->
+      <div class="card">
 
-    <!-- Card body -->
-    <div class="card-body">
+        <!-- Card body -->
+        <div class="card-body">
 
-        <!-- Material form register -->
-        <form (ngSubmit)="onLoginSubmit()" #f="ngForm" >
-            <p class="h4 text-center text-white py-4">Login</p>
+          <!-- Material form register -->
+          <form (ngSubmit)="onLoginSubmit(f)" #f="ngForm">
+            <p class="h4 text-center py-4">Login</p>
+            <div class="form-group">
+              <label for="email Id">Email Id</label>
+              <input type="text" class="form-control" placeholder="Email Id" name="emailId" ngModel>
+            </div>
+            <div class="form-group">
+              <label for="password">Password</label>
+              <input type="password" class="form-control" placeholder="Password" name="password" ngModel>
+            </div>
+
+            <div class="form-group">
+              <button class="btn btn-primary mr-2" type="submit">Login</button>
+              <button class="btn btn-secondary" type="button">Forgot Password</button>
+            </div>
 
 
 
             <!-- Material input email -->
-            <div class="md-form">
-                <i class="fa fa-envelope prefix grey-text"></i>
 
-                    <input type="email" name="email" id="txtemailId"
-                    class="form-control"
-                    placeholder="Your email"
-                    ngModel
-                    required
-                    email
-                    #email="ngModel">
-                    <label for="emailId" class="font-weight-light"></label>
-                    <span class="text-warning display-6" *ngIf="!email.valid && email.touched" >Please enter valid email</span>
+          </form>
 
+          <!-- Material form register -->
 
+        </div>
+        <!-- Card body -->
 
-            </div>
-
-            <!-- Material input password -->
-            <div class="md-form">
-                <i class="fa fa-lock prefix grey-text"></i>
-                <input type="password" name="password" id="txtpassword"
-                class="form-control" placeholder="Your Password"
-                ngModel
-                required
-                minlength="6"
-                #password="ngModel">
-                <span class="text-warning display-6" *ngIf="!password.valid && password.touched" >Please enter valid password</span>
-                <label for="txtpassword" class="font-weight-light"></label>
-            </div>
-
-            <div class="text-center py-4 mt-3">
-              <input type="submit"
-              value="Sign In"
-              class="btn btn-primary"
-              [disabled]="!f.valid">
-
-            </div>
-            <div class="d-flex flex-row justify-content-center text-white">
-                <div class="form-check form-sm align-self-end ml-1 mr-3">
-                    <input class="form-check-input" name="rememberMe" type="checkbox" id="rememberMe" ngModel>
-                    <label class="form-check-label text-muted" for="rememberMe">Remember Me</label>
-                  </div>
-                  <div>
-                    <a href="" class="text-secondary">Forgot Password</a>
-                  </div>
-            </div>
-        </form>
-
-        <!-- Material form register -->
-
-    </div>
-    <!-- Card body -->
-
-</div>
-<!-- Card -->
-<!-- Material form login -->
+      </div>
+      <!-- Card -->
+      <!-- Material form login -->
 
     </div>
   </div>

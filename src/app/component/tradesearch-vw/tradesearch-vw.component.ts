@@ -24,5 +24,9 @@ export class TradesearchVwComponent implements OnInit {
   onEdit(tradeItem: TradeSearchVM) {
     this.tradeService.editTradeItem(tradeItem);
   }
+  editTradeDetails(item: TradeSearchVM) {
+   // console.log('item :', item);
+   this.tradeService.editTradeItem(item);
+  }
 
 }

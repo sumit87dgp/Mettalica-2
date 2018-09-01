@@ -4,12 +4,24 @@
       <thead class="bg-primary">
         <tr>
           <th>
-            <span class="m-0 p-0">
+            <!-- <span class="m-0 p-0">
               <strong>Trade Id :</strong>
             </span>
             <span class="m-0 p-0">
-              <input type="text" id="tradeId" formControlName="id">
-            </span>
+              <! <input type="text" id="tradeId" class="form-control form-control-sm" formControlName="id"> -->
+            <!-- XYZ -->
+            <!-- <input type="text" readonly class="form-control-plaintext" id="tradeid" formControlName="id"> -->
+            <!-- <label for="id" formControlName="id"></label> -->
+            <!-- </span> -->
+
+            <div class="form-group row px-0 py-0 mb-1">
+              <label for="id" class="font-weight-strong col-form-label col-sm-5 my-0">Trade Id :</label>
+              <div class="col-sm-7 ml-0">
+                <!-- <div class="md-form form-sm mt-1 mx-0 bg-light"> -->
+                  <input type="text" readonly class="form-control-plaintext" id="tradeid" formControlName="id">
+                <!-- </div> -->
+              </div>
+            </div>
 
           </th>
         </tr>
@@ -80,7 +92,7 @@
             </div>
 
           </div>
-          <div class="form-group row px-0 py-0 mb-1">
+          <div class="form-group row px-0 py-0 mb-0">
             <label for="materialFormCardNameEx" class="font-weight-light  col-form-label col-sm-6 my-0">Location</label>
             <div class="col-sm-6 ml-0">
               <div class="md-form form-sm mt-1 mx-0 bg-light">
@@ -91,6 +103,12 @@
               </div>
 
             </div>
+
+          </div>
+
+          <div class="form-group row mt-3">
+            <button class="btn btn-primary ml-auto mr-1" type="submit">Save</button>
+            <button class="btn btn-secondary ml-1 mr-auto" type="button">Cancel</button>
 
           </div>
         </td>

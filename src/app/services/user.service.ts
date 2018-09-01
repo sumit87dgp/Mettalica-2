@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { UserVM } from '../models/userVM';
+import { AuthData } from '../models/authVM';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -9,13 +11,24 @@ export class UserService {
 
   user: UserVM;
 
-  constructor(private httpClient: HttpClient) { }
+  constructor(private httpClient: HttpClient, private router: Router) { }
 
 
-  Authenticate(email: string, password: string): UserVM {
+  Authenticate(email: string, password: string) {
+    const authdata: AuthData = { emailId: email, password: password };
+    this.httpClient.post<{ token: string, expiresIn: number, userId: string }>('http://localhost:3000/api/user/login', authdata)
+      .subscribe(responsedata => {
+        const token = responsedata.token;
+        if (token) {
+          this.router.navigate(['/']);
+        }
 
-    return this.GenerateUser();
+      });
+    // return this.GenerateUser();
+
   }
+
+
 
   ResetPassword(email: string, password: string): UserVM {
     return this.GenerateUser();

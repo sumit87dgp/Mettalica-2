@@ -1,8 +1,9 @@
-const mongoose=require('mongoose');
+const mongoose = require('mongoose');
 const express = require('express');
-const bodyparser=require('body-parser');
-const userroutes=require('./routes/userRoutes');
-const traderoutes=require('./routes/traderoutes');
+const bodyparser = require('body-parser');
+const userroutes = require('./routes/userRoutes');
+const traderoutes = require('./routes/traderoutes');
+const authroutes = require('./routes/authroutes');
 const app = express();
 
 
@@ -22,6 +23,7 @@ app.use((req, res, next) => {
   next();
 });
 
-app.use('/api/users',userroutes);
-app.use('/api/trades',traderoutes);
+app.use('/api/users', userroutes);
+app.use('/api/trades', traderoutes);
+app.use('/api/user', authroutes);
 module.exports = app;
