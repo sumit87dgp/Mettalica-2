@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { TradeSearchVM } from '../../models/tradesearchVM';
 import { DomElementSchemaRegistry } from '@angular/compiler';
 import { TradeserviceService } from '../../services/tradeservice.service';
+import { ComponentInteractionService } from '../../services/shared/componentInteraction.service';
 
 @Component({
   selector: 'app-tradesearch-vw',
@@ -11,7 +12,7 @@ import { TradeserviceService } from '../../services/tradeservice.service';
 export class TradesearchVwComponent implements OnInit {
 
   tradeSearchResult: TradeSearchVM[];
-  constructor(private tradeService: TradeserviceService) { }
+  constructor(private tradeService: TradeserviceService, private cissrv: ComponentInteractionService) { }
 
   ngOnInit() {
     this.tradeService.getfilteredorAll();
@@ -25,8 +26,13 @@ export class TradesearchVwComponent implements OnInit {
     this.tradeService.editTradeItem(tradeItem);
   }
   editTradeDetails(item: TradeSearchVM) {
-   // console.log('item :', item);
-   this.tradeService.editTradeItem(item);
+    // console.log('item :', item);
+    this.cissrv.changeMode('edit');
+    this.tradeService.editTradeItem(item);
+  }
+  onCreateNew() {
+    console.log('Hit');
+    this.cissrv.changeMode('create');
   }
 
 }

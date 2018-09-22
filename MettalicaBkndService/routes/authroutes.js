@@ -7,7 +7,7 @@ const jwt = require('jsonwebtoken');
 router.post('/login', (req, res, body) => {
   let fetchedUser;
   User.findOne({
-    email = req.body.emailId
+    email: req.body.emailId
   }).then(user => {
     if (!user) {
       return res.status(401).json({
@@ -15,14 +15,14 @@ router.post('/login', (req, res, body) => {
       })
     }
     fetchedUser = user;
-    return bcrypt.compare(req.body.password, user.password);
+    return bcrypt.compare(req.body.password, user.passWord);
   }).then(result => {
     if (!result) {
       return res.status(401).json({
         message: 'Auth failed'
       })
     }
-
+    // console.log(result);
     const token=jwt.sign({
       email:fetchedUser.emailId,
       userId:fetchedUser._id
@@ -36,8 +36,11 @@ router.post('/login', (req, res, body) => {
       userId:fetchedUser._id
     });
   }).catch(err=>{
+    console.log('error',err)
     return res.status(401).json({
       message: 'Invalid User Credentials'
     })
   })
-})
+});
+
+module.exports=router;

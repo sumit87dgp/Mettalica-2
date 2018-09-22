@@ -3,6 +3,7 @@ import { INgxSelectOption } from 'ngx-select-ex/ngx-select-ex';
 import { FormControl } from '../../../../node_modules/@angular/forms';
 import { TradeSearchVM } from '../../models/tradesearchVM';
 import { TradeserviceService } from '../../services/tradeservice.service';
+import { NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-trade-search',
@@ -12,6 +13,7 @@ import { TradeserviceService } from '../../services/tradeservice.service';
 export class TradeSearchComponent implements OnInit {
 
   tradeSearchModel: TradeSearchVM;
+  mindate: NgbDateStruct;
 
 
   public items: string[] = ['Amsterdam', 'Antwerp', 'Athens', 'Barcelona',
@@ -34,6 +36,7 @@ export class TradeSearchComponent implements OnInit {
   constructor(private trdservice: TradeserviceService) { }
 
   ngOnInit() {
+    this.mindate = { year: 2017, month: 1, day: 1 };
     this.tradeSearchModel = {
       id: '32131-432423',
       tradeDate: new Date('MM/dd/yyyy'),

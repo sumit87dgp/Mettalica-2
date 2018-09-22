@@ -21,7 +21,9 @@
 
             <div class="form-group">
               <div class="input-group">
-                <input type="text" name="todate" class="form-control form-control-sm" ngbDatepicker #d="ngbDatepicker" [(ngModel)]="tradeSearchModel.todate">
+                <input type="text" name="todate"
+                class="form-control form-control-sm" ngbDatepicker #d="ngbDatepicker"
+                 [minDate]="mindate" [(ngModel)]="tradeSearchModel.todate">
                 <div class="compact input-group-append">
                   <button class="btn compact" (click)="d.toggle()">
                     <i class="fa fa-calendar compact" aria-hidden="true"></i>

@@ -10,7 +10,8 @@ import { AuthGaurd } from './gaurds/auth.gaurd';
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
-  { path: '', component: HomeComponent, canActivate: [AuthGaurd] }
+  { path: '', component: HomeComponent }
+  // { path: '', component: HomeComponent, canActivate: [AuthGaurd] }
 
 ];
 
@@ -22,6 +23,7 @@ const routes: Routes = [
   exports: [
     RouterModule
   ],
+  providers: [AuthGaurd],
   declarations: []
 })
 export class AppRoutingModule { }

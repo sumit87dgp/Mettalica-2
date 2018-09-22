@@ -4,7 +4,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NavigationComponent } from './navigation/navigation.component';
 import { TradeSearchComponent } from './component/trade-search/trade-search.component';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModule, NgbDatepickerConfig } from '@ng-bootstrap/ng-bootstrap';
 import { HttpClientModule } from '@angular/common/http';
 
 // For form dropdowns
@@ -15,7 +15,7 @@ import { LoginComponent } from './component/login/login.component';
 import { RegisterComponent } from './component/register/register.component';
 import { AppRoutingModule } from './/app-routing.module';
 import { TradesearchVwComponent } from './component/tradesearch-vw/tradesearch-vw.component';
-import { TradedetailsVwComponent } from './component/tradedetails-vw/tradedetails-vw.component';
+// import { TradedetailsVwComponent } from './component/tradedetails-vw/tradedetails-vw.component';
 import { DdlselectComponent } from './shared/ddlselect/ddlselect.component';
 import { TradeEditOrCreateComponent } from './component/trade-edit-or-create/trade-edit-or-create.component';
 import { HomeComponent } from './component/home/home.component';
@@ -33,13 +33,21 @@ import { SubnavigationComponent } from './component/subnavigation/subnavigation.
     LoginComponent,
     RegisterComponent,
     TradesearchVwComponent,
-    TradedetailsVwComponent,
+    // TradedetailsVwComponent,
     DdlselectComponent,
     TradeEditOrCreateComponent,
     HomeComponent,
     MyselfComponent,
     MyhighlighterDirective,
-    SubnavigationComponent],
+    SubnavigationComponent
+    // NgbInputDatepicker --error Uncaught Error:
+    // Type NgbInputDatepicker is part of the declarations of
+    // 2 modules: NgbDatepickerModule and AppModule! Please consider
+    // moving NgbInputDatepicker to a higher module that imports
+    // NgbDatepickerModule and AppModule. You can also create a new NgModule
+    //  that exports and includes NgbInputDatepicker then import that NgModule
+    //  in NgbDatepickerModule and AppModule.
+  ],
   imports: [
     BrowserModule,
     FormsModule,
@@ -50,7 +58,7 @@ import { SubnavigationComponent } from './component/subnavigation/subnavigation.
     MDBBootstrapModule.forRoot(),
     NgbModule.forRoot()
   ],
-  providers: [],
+  providers: [NgbDatepickerConfig],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

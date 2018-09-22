@@ -1,4 +1,5 @@
 const moongoose = require('mongoose');
+const uniquevalidator=require('mongoose-unique-validator');
 const userSchema = moongoose.Schema({
   id: {
     type: String,
@@ -13,7 +14,8 @@ const userSchema = moongoose.Schema({
   },
   email: {
     type: String,
-    required: true
+    required: true,
+    unique:true
   },
   passWord: {
     type: String,
@@ -29,4 +31,5 @@ const userSchema = moongoose.Schema({
   }
 });
 
+userSchema.plugin(uniquevalidator);
 module.exports = moongoose.model('User', userSchema);

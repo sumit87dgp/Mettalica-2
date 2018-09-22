@@ -1,5 +1,5 @@
 <div class="card card-body px-2 py-2">
-  <form [formGroup]="tradeEditCreateForm">
+  <form [formGroup]="tradeEditCreateForm" (ngSubmit)="onSubmit()">
     <table class="table bg-light">
       <thead class="bg-primary">
         <tr>
@@ -18,7 +18,7 @@
               <label for="id" class="font-weight-strong col-form-label col-sm-5 my-0">Trade Id :</label>
               <div class="col-sm-7 ml-0">
                 <!-- <div class="md-form form-sm mt-1 mx-0 bg-light"> -->
-                  <input type="text" readonly class="form-control-plaintext" id="tradeid" formControlName="id">
+                <input type="text" readonly class="form-control-plaintext" id="tradeid" formControlName="id">
                 <!-- </div> -->
               </div>
             </div>
@@ -33,9 +33,17 @@
           <div class="form-group row px-0 py-0 mb-1">
             <label for="tradeDate" class="font-weight-light col-form-label col-sm-6 my-0">Trade Date</label>
             <div class="col-sm-6 ml-0">
-              <div class="md-form form-sm mt-1 mx-0 bg-light">
-                <input type="text" class="form-control form-control-sm" name="tradeDate" formControlName="tradeDate">
-              </div>
+              <!-- <div class="form-sm mt-1 mx-0 bg-light"> -->
+                <div class="input-group">
+                  <input type="text" class="form-control form-control-sm" name="tradeDate" ngbDatepicker #d="ngbDatepicker"
+                    formControlName="tradeDate">
+                  <div class="compact input-group-append">
+                    <button class="btn compact" (click)="d.toggle()">
+                      <i class="fa fa-calendar compact" aria-hidden="true"></i>
+                    </button>
+                  </div>
+                </div>
+              <!-- </div> -->
             </div>
           </div>
 
@@ -96,9 +104,7 @@
             <label for="materialFormCardNameEx" class="font-weight-light  col-form-label col-sm-6 my-0">Location</label>
             <div class="col-sm-6 ml-0">
               <div class="md-form form-sm mt-1 mx-0 bg-light">
-                <input type="text" class="form-control form-control-sm"
-                formControlName="location"
-                >
+                <input type="text" class="form-control form-control-sm" formControlName="location">
 
               </div>
 
