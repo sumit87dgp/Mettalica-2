@@ -1,0 +1,59 @@
+<div class="card card-body">
+  <table class="table table-hover bg-light">
+    <thead class="bg-primary">
+      <tr>
+        <th>Country Name</th>
+        <th>Abbr</th>
+        <th><button class="btn btn-success btn-sm" (click)="basicModal.show()">
+            <i class="fa fa-plus"></i>
+          </button>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let countryitem of countryList" click="editcountrydetails(countryitem),basicModal.show()">
+        <td>{{countryitem.name}}</td>
+        <td>{{countryitem.abbreviatedname}}</td>
+        <td> <a href="" class="p-1 border rounded border-danger">
+            <i class="fa fa-trash text-danger"></i>
+          </a></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!--SECTION MODAL-->
+<div mdbModal #basicModal="mdbModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myBasicModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <!-- <button type="button" class="close float-right" aria-label="Close" (click)="basicModal.hide()">
+          <span aria-hidden="true">×</span>
+        </button> -->
+        <h4 class="modal-title w-100" id="myModalLabel">Add New Country</h4>
+      </div>
+      <form (ngSubmit)="addeditCountry()" #f="ngForm">
+        <div class="modal-body">
+
+          <div class="form-group">
+            <label for="">Country Name</label>
+            <input type="text" name="countryName" class="form-control" [(ngModel)]="country.name" #countryName="ngModel" required>
+            <span class="text-danger text-small" *ngIf="!countryName.valid && countryName.touched">Country is required</span>
+          </div>
+
+          <div class="form-group">
+            <label for="">Abbreviated Name</label>
+            <input type="text" class="form-control" name="abbrvName" [(ngModel)]="country.abbreviatedname" #avrName="ngModel" required maxlength="4">
+            <span class="text-danger text-small" *ngIf="!avrName.valid && avrName.touched">Abbreviated name is required</span>
+          </div>
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" mdbBtn color="secondary" class="waves-light" aria-label="Close" (click)="basicModal.hide()"
+            mdbWavesEffect>Close</button>
+          <button type="submit" mdbBtn color="primary" class="relative waves-light" [disabled]="f.invalid" mdbWavesEffect>Save changes</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

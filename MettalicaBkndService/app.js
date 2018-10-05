@@ -4,6 +4,7 @@ const bodyparser = require('body-parser');
 const userroutes = require('./routes/userRoutes');
 const traderoutes = require('./routes/traderoutes');
 const authroutes = require('./routes/authroutes');
+const appdataroutes=require('./routes/appdataroutes');
 const app = express();
 
 
@@ -29,4 +30,5 @@ app.use((req, res, next) => {
 app.use('/api/users', userroutes);
 app.use('/api/trades', traderoutes);
 app.use('/api/user', authroutes);
+app.use('/api/appdata',appdataroutes);
 module.exports = app;

@@ -23,6 +23,12 @@ import { MyselfComponent } from './component/myself/myself.component';
 import { MyhighlighterDirective } from './shared/myhighlighter.directive';
 import { SubnavigationComponent } from './component/subnavigation/subnavigation.component';
 
+// Admin modules
+import { CommodityAddComponent } from './component/admin/commodity-add/commodity-add.component';
+import { AdminHomeComponent } from './component/admin/admin-home/admin-home.component';
+import { CountryAddComponent } from './component/admin/country/country-add.component';
+import { CountryEditAddComponent } from './component/admin/country-edit-add/country-edit-add.component';
+
 
 
 @NgModule({
@@ -39,7 +45,12 @@ import { SubnavigationComponent } from './component/subnavigation/subnavigation.
     HomeComponent,
     MyselfComponent,
     MyhighlighterDirective,
-    SubnavigationComponent
+    SubnavigationComponent,
+    // Admin modules
+    CommodityAddComponent,
+    AdminHomeComponent,
+    CountryAddComponent,
+    CountryEditAddComponent
     // NgbInputDatepicker --error Uncaught Error:
     // Type NgbInputDatepicker is part of the declarations of
     // 2 modules: NgbDatepickerModule and AppModule! Please consider
