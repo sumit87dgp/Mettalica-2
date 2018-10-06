@@ -10,7 +10,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let countryitem of countryList" click="editcountrydetails(countryitem),basicModal.show()">
+      <tr *ngFor="let countryitem of countryList" (click)="editcountrydetails(countryitem)">
         <td>{{countryitem.name}}</td>
         <td>{{countryitem.abbreviatedname}}</td>
         <td> <a href="" class="p-1 border rounded border-danger">
