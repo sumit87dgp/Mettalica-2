@@ -1,4 +1,7 @@
 import { Component, OnInit, Input, Output } from '@angular/core';
+import { IDDLoptionsmodel } from './IDDLoptionsmodel';
+import { DDLmodel } from './DDlmodel';
+
 
 @Component({
   selector: 'app-ddlselect',
@@ -7,9 +10,10 @@ import { Component, OnInit, Input, Output } from '@angular/core';
 })
 export class DdlselectComponent implements OnInit {
 
-  @Input() options: string[];
+  // @Input() options: string[];
+  @Input() options: DDLmodel[];
 
-  @Output() selecteditem: string;
+  @Output() selecteditem: DDLmodel;
 
   constructor() { }
 

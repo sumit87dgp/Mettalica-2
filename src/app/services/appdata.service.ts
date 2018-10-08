@@ -3,21 +3,50 @@ import { HttpClient } from '@angular/common/http';
 import { CountryVM } from '../models/admin/countryVM';
 import { Subject } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { ThrowStmt } from '@angular/compiler';
+import { CommodityVM } from '../models/admin/commodityVM';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AppdataService {
 
-  countryList: CountryVM[];
+  countryList: CountryVM[] = [];
+  commList: CommodityVM[] = [];
 
   private countryListSubject = new Subject<CountryVM[]>();
-
+  private commListSubject = new Subject<CommodityVM[]>();
 
   constructor(private httpclient: HttpClient) { }
 
+  commodityObservableListner() {
+    return this.commListSubject.asObservable();
+  }
+
   countriesObservableListner() {
     return this.countryListSubject.asObservable();
+  }
+
+  getcommoditylist() {
+    this.httpclient.get<{
+      message: string,
+      commoditylist: any, error?: any
+    }>('http://localhost:3000/api/appdata/comm')
+      .subscribe((response) => {
+        const commoditylist: CommodityVM[] = response.commoditylist.map((commodity) => {
+          return new CommodityVM(commodity._id, commodity.commname, commodity.abrvname, commodity.price);
+        });
+        if (commoditylist.length > 0) {
+          this.commList = commoditylist;
+          this.commListSubject.next([...this.commList]);
+        } else {
+          console.log('No commodities found');
+          // this.commListSubject.error(() => {
+          //   console.log(`The detailed error ${response.error}`);
+          // });
+        }
+
+      });
   }
   getallcountries() {
     // let countries: CountryVM[];
@@ -30,7 +59,9 @@ export class AppdataService {
         };
       }))
       .subscribe((transformedData) => {
-        this.countryListSubject.next([...transformedData.countries]);
+        this.countryList = transformedData.countries;
+        // this.countryListSubject.next([...transformedData.countries]);
+        this.countryListSubject.next([...this.countryList]);
       });
     // const countries: CountryVM[] = [new CountryVM('', 'India', 'IND'), new CountryVM('', 'New Zealand', 'NZ')];
     // return countries;
@@ -40,13 +71,42 @@ export class AppdataService {
     // console.log(country);
     if (country.id === '') {
       // Create New
-      console.log(country);
-      this.httpclient.post<{ message: string }>('http://localhost:3000/api/appdata/country', country)
-        .subscribe(resdata => {
-          console.log(resdata);
+      // console.log(country);
+      this.httpclient.post<{ message: string, newcountry: any }>('http://localhost:3000/api/appdata/country', country)
+        .pipe(map((data) => {
+          console.log(data);
+          const countryobj = new CountryVM(data.newcountry._id, data.newcountry.countryName, data.newcountry.abbrvName);
+          return {
+            // country: data.newcountry.map(ncountry => {
+            //   return new CountryVM(ncountry._id, ncountry.countryName, ncountry.abbrvName);
+            // }),
+            country2: countryobj
+          };
+        }))
+        .subscribe(transformedData => {
+          console.log(transformedData);
+          this.countryList.push(transformedData.country2);
+          this.countryListSubject.next([...this.countryList]);
         });
     } else {
       // Edit
+      this.httpclient.put<{ message: string, editedcountry: any }>('http://localhost:3000/api/appdata/country', country)
+        .subscribe(resultantData => {
+
+          console.log(resultantData);
+          this.countryList.splice(this.countryList.findIndex
+            (p => p.id === resultantData.editedcountry._id),
+            1,
+            new CountryVM(resultantData.editedcountry._id, resultantData.editedcountry.countryName, resultantData.editedcountry.abbrvName));
+
+          // this.countryList = this.countryList.filter(d => {
+          //   return d.id !== resultantData.editedcountry._id;
+          // });
+          // console.log('After filtering', this.countryList);
+          // this.countryList.unshift(resultantData.editedcountry);
+          // console.log(resultantData);
+          this.countryListSubject.next([...this.countryList]);
+        });
     }
   }
 

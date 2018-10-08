@@ -28,6 +28,7 @@ import { CommodityAddComponent } from './component/admin/commodity-add/commodity
 import { AdminHomeComponent } from './component/admin/admin-home/admin-home.component';
 import { CountryAddComponent } from './component/admin/country/country-add.component';
 import { CountryEditAddComponent } from './component/admin/country-edit-add/country-edit-add.component';
+import { CommodityComponent } from './component/admin/commodity/commodity.component';
 
 
 
@@ -50,7 +51,8 @@ import { CountryEditAddComponent } from './component/admin/country-edit-add/coun
     CommodityAddComponent,
     AdminHomeComponent,
     CountryAddComponent,
-    CountryEditAddComponent
+    CountryEditAddComponent,
+    CommodityComponent
     // NgbInputDatepicker --error Uncaught Error:
     // Type NgbInputDatepicker is part of the declarations of
     // 2 modules: NgbDatepickerModule and AppModule! Please consider

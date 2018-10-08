@@ -1,4 +1,4 @@
 <!-- <label for="exampleFormControlSelect1">Example select</label> -->
 <select class="form-control form-control-sm" id="exampleFormControlSelect1" (change)="OnItemChange($event)">
-<option *ngFor='let item of options' value="{{item}}">{{item}}</option>
+<option *ngFor='let item of options' value="{{item.value}}">{{item.text}}</option>
 </select>
