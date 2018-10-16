@@ -5,6 +5,7 @@ const userroutes = require('./routes/userRoutes');
 const traderoutes = require('./routes/traderoutes');
 const authroutes = require('./routes/authroutes');
 const appdataroutes=require('./routes/appdataroutes');
+const counterpartyroutes=require('./routes/counterpartyroutes');
 const app = express();
 
 
@@ -31,4 +32,5 @@ app.use('/api/users', userroutes);
 app.use('/api/trades', traderoutes);
 app.use('/api/user', authroutes);
 app.use('/api/appdata',appdataroutes);
+app.use('/api/ctrparty',counterpartyroutes);
 module.exports = app;

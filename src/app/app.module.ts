@@ -30,6 +30,9 @@ import { AdminHomeComponent } from './component/admin/admin-home/admin-home.comp
 import { CountryAddComponent } from './component/admin/country/country-add.component';
 import { CountryEditAddComponent } from './component/admin/country-edit-add/country-edit-add.component';
 import { CommodityComponent } from './component/admin/commodity/commodity.component';
+import { CounterpartyComponent } from './component/admin/counterparty/counterparty.component';
+import { AdminmodalhostDirective } from './shared/adminmodalhost.directive';
+import { CounterpartyAddComponent } from './component/admin/counterparty-add/counterparty-add.component';
 
 
 
@@ -54,7 +57,10 @@ import { CommodityComponent } from './component/admin/commodity/commodity.compon
     CountryAddComponent,
     CountryEditAddComponent,
     CommodityComponent,
-    CommodityDirective
+    CommodityDirective,
+    CounterpartyComponent,
+    AdminmodalhostDirective,
+    CounterpartyAddComponent
     // NgbInputDatepicker --error Uncaught Error:
     // Type NgbInputDatepicker is part of the declarations of
     // 2 modules: NgbDatepickerModule and AppModule! Please consider
@@ -74,7 +80,7 @@ import { CommodityComponent } from './component/admin/commodity/commodity.compon
     NgbModule.forRoot()
   ],
   providers: [NgbDatepickerConfig],
-  entryComponents: [CommodityAddComponent],
+  entryComponents: [CommodityAddComponent, CounterpartyAddComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

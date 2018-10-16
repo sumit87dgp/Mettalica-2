@@ -5,6 +5,7 @@ import { Subject } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { ThrowStmt } from '@angular/compiler';
 import { CommodityVM } from '../models/admin/commodityVM';
+import { CounterPartyVM } from '../models/admin/counterpartyVM';
 
 @Injectable({
   providedIn: 'root'
@@ -13,9 +14,11 @@ export class AppdataService {
 
   countryList: CountryVM[] = [];
   commList: CommodityVM[] = [];
+  ctrpartyList: CounterPartyVM[] = [];
 
   private countryListSubject = new Subject<CountryVM[]>();
   private commListSubject = new Subject<CommodityVM[]>();
+  private ctrpartyListSubject = new Subject<CounterPartyVM[]>();
 
   constructor(private httpclient: HttpClient) { }
 
@@ -25,6 +28,31 @@ export class AppdataService {
 
   countriesObservableListner() {
     return this.countryListSubject.asObservable();
+  }
+
+  ctrpartyObservableListner() {
+    return this.ctrpartyListSubject.asObservable();
+  }
+
+  getctrpartylist() {
+    this.httpclient.get<{ message: string, ctrparties: any }>('http://localhost:3000/api/ctrparty')
+      .subscribe((response) => {
+        this.ctrpartyList = response.ctrparties.map((ctrparty) => {
+          return new CounterPartyVM(ctrparty.name, ctrparty.abrvname,
+            ctrparty.location, ctrparty.id);
+        });
+        this.ctrpartyListSubject.next([...this.ctrpartyList]);
+      });
+  }
+
+  addnewctrparty(newctrparty: CounterPartyVM) {
+    this.httpclient.post<{ message: string, ctrparty: any }>('http://localhost:3000/api/ctrparty', newctrparty)
+      .subscribe(response => {
+        const counterparty: CounterPartyVM = new CounterPartyVM(response.ctrparty.name, response.ctrparty.abrvname,
+          response.ctrparty.location, response.ctrparty._id);
+        this.ctrpartyList.unshift(counterparty);
+        this.ctrpartyListSubject.next([...this.ctrpartyList]);
+      });
   }
 
   getcommoditylist() {

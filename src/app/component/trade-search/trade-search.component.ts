@@ -8,6 +8,8 @@ import { DDLmodel } from '../../shared/ddlselect/DDlmodel';
 import { AppdataService } from '../../services/appdata.service';
 import { CountryVM } from '../../models/admin/countryVM';
 import { CommodityVM } from '../../models/admin/commodityVM';
+import { Subscription } from 'rxjs';
+import { CounterPartyVM } from '../../models/admin/counterpartyVM';
 
 @Component({
   selector: 'app-trade-search',
@@ -18,6 +20,11 @@ export class TradeSearchComponent implements OnInit {
 
   tradeSearchModel: TradeSearchVM;
   mindate: NgbDateStruct;
+
+  ddlcountrysubscription: Subscription;
+  ddlcommsub: Subscription;
+  ddlctrparty: Subscription;
+
 
 
   public ddlcountryitems: DDLmodel[] = [];
@@ -37,14 +44,12 @@ export class TradeSearchComponent implements OnInit {
 
   public ngxControl = new FormControl();
 
-  private _ngxDefaultTimeout;
-  private _ngxDefaultInterval;
-  private _ngxDefault;
+
 
   constructor(private trdservice: TradeserviceService, private appdtservice: AppdataService) { }
 
   ngOnInit() {
-    this.ddlCountryList();
+    this.ddlInitList();
     this.mindate = { year: 2017, month: 1, day: 1 };
     this.tradeSearchModel = {
       id: '32131-432423',
@@ -62,20 +67,28 @@ export class TradeSearchComponent implements OnInit {
     };
   }
 
-  private ddlCountryList() {
+  private ddlInitList() {
     this.appdtservice.getallcountries();
     this.appdtservice.getcommoditylist();
-    this.appdtservice.countriesObservableListner()
+    this.appdtservice.getctrpartylist();
+    this.ddlcountrysubscription = this.appdtservice.countriesObservableListner()
       .subscribe((countries: CountryVM[]) => {
         countries.map((country) => {
           this.ddlcountryitems.push(new DDLmodel(country.abbreviatedname, country.id));
           // return new DDLmodel(country.abbreviatedname, country.id);
         });
       });
-    this.appdtservice.commodityObservableListner()
+    this.ddlcommsub = this.appdtservice.commodityObservableListner()
       .subscribe((commodities: CommodityVM[]) => {
         commodities.map(comm => {
           this.ddlcommitems.push(new DDLmodel(comm.name, comm.id));
+        });
+      });
+
+    this.ddlctrparty = this.appdtservice.ctrpartyObservableListner()
+      .subscribe((ctrparties: CounterPartyVM[]) => {
+        ctrparties.map(ctrparty => {
+          this.ddlcounterpartyitems.push(new DDLmodel(ctrparty.abrvname, ctrparty.id));
         });
       });
   }

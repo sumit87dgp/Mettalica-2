@@ -31,7 +31,7 @@ export class CommodityComponent implements OnInit, OnDestroy {
     this.appdatasrv.getcommoditylist();
     this.commoditylistsubs = this.appdatasrv.commodityObservableListner().subscribe((commoditylist: CommodityVM[]) => {
       this.commoditylist = commoditylist;
-      console.log(this.commoditylist);
+      // console.log(this.commoditylist);
     });
   }
   addcommodity() {

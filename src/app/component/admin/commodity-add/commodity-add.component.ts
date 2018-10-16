@@ -66,6 +66,7 @@ export class CommodityAddComponent implements OnInit, AfterViewInit {
         this.comeditcreateform.get('priceperunit').value
       );
       this.appdtsrv.addnewcommodity(comm);
+      this.toggleModal();
     }
 
   }
