@@ -4,6 +4,29 @@ const CommodityModel = require('../models/commodities');
 const router = express.Router();
 
 
+router.put('/comm', (req, res) => {
+  const commodity = new CommodityModel({
+    _id: req.body.id,
+    abrvname: req.body.abrvname,
+    commname: req.body.commname,
+    price: req.body.price
+  });
+  CommodityModel.updateOne({
+    _id: req.body.id
+  }, commodity).then(result => {
+    if (result.n > 0) {
+      res.status(200).json({
+        message: 'Commodity updated successfully',
+        editedcommodity: commodity
+      })
+    } else {
+      res.status(404).json({
+        message: 'Not Found',
+        editedcommodity: null
+      });
+    }
+  })
+});
 
 router.put('/country', (req, res) => {
   const country = new CountryModel({
@@ -32,7 +55,26 @@ router.put('/country', (req, res) => {
       editedcountry: null
     });
   });
-})
+});
+
+router.post('/comm', (req, res) => {
+  const commodity = new CommodityModel({
+    abrvname: req.body.abrvname,
+    commname: req.body.name,
+    price: req.body.priceperunit
+  })
+  commodity.save().then(createdcommodity => {
+    res.status(201).json({
+      message: 'commodity created successfully',
+      newcommodity: createdcommodity
+    });
+  }).catch(err => {
+    res.status(500).json({
+      message: 'Internal server error',
+      newcommodity: null
+    });
+  })
+});
 
 router.post('/country', (req, res) => {
   console.log(req);
@@ -66,14 +108,14 @@ router.get('/comm', (req, res) => {
       commoditylist: null,
       error: err
     })
-  }).catch(err=>{
+  }).catch(err => {
     res.status(501).json({
       message: 'Internal occur form catch',
       commoditylist: null,
       error: err
     })
   });
-})
+});
 
 router.get('/countries', (req, res) => {
 
@@ -97,5 +139,25 @@ router.get('/countries', (req, res) => {
 
   //countryQuery.then()
 });
+
+router.delete('/comm/:id', (req, res)=> {
+  CommodityModel.deleteOne({
+    _id: req.params.id
+  }).then(result => {
+    if (result.n > 0) {
+      // console.log(result);
+      res.status(200).json({
+        statuscode: 1,
+        message: 'Commodity deleted successfully'
+      });
+    } else {
+      // console.log(result);
+      res.status(401).json({
+        statuscode: 0,
+        message: 'resource not found'
+      });
+    }
+  })
+})
 
 module.exports = router;

@@ -48,6 +48,33 @@ export class AppdataService {
 
       });
   }
+
+  addnewcommodity(newcommodity: CommodityVM) {
+    console.log('COPY', newcommodity);
+    this.httpclient.post<{ message: string, newcommodity: any }>('http://localhost:3000/api/appdata/comm', newcommodity)
+      .subscribe(resultantdata => {
+        const newcomm: CommodityVM = new CommodityVM(resultantdata.newcommodity._id,
+          resultantdata.newcommodity.name,
+          resultantdata.newcommodity.abrvname,
+          resultantdata.newcommodity.price);
+        this.commList.unshift(newcomm);
+        this.commListSubject.next([...this.commList]);
+      });
+  }
+
+  editcommodity(exitsingcom: CommodityVM) {
+    this.httpclient.put<{ message: string, editedcommodity: any }>('http://localhost:3000/api/appdata/comm', exitsingcom)
+      .subscribe(resultantdata => {
+        const editedcomm = resultantdata.editedcommodity;
+        this.commList
+          .splice(this.commList.findIndex(p => p.id === editedcomm._id), 1,
+            new CommodityVM(editedcomm._id, editedcomm.commname,
+              editedcomm.abrvname, editedcomm.price));
+        this.commListSubject.next([...this.commList]);
+      });
+
+  }
+
   getallcountries() {
     // let countries: CountryVM[];
     this.httpclient.get<{ message: string, countries: any }>('http://localhost:3000/api/appdata/countries')
@@ -112,5 +139,15 @@ export class AppdataService {
 
   addcountriesinbatch() {
 
+  }
+
+  deletecommodity(id: string) {
+    this.httpclient.delete<{ statuscode: number, message: string }>(`http://localhost:3000/api/appdata/comm/${id}`)
+      .subscribe(resultantdata => {
+        if (resultantdata.statuscode === 1) {
+          this.commList.splice(this.commList.findIndex(i => i.id === id), 1);
+          this.commListSubject.next([...this.commList]);
+        }
+      });
   }
 }

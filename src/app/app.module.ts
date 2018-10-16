@@ -24,6 +24,7 @@ import { MyhighlighterDirective } from './shared/myhighlighter.directive';
 import { SubnavigationComponent } from './component/subnavigation/subnavigation.component';
 
 // Admin modules
+import { CommodityDirective } from './component/admin/commodity/commodity.directive';
 import { CommodityAddComponent } from './component/admin/commodity-add/commodity-add.component';
 import { AdminHomeComponent } from './component/admin/admin-home/admin-home.component';
 import { CountryAddComponent } from './component/admin/country/country-add.component';
@@ -52,7 +53,8 @@ import { CommodityComponent } from './component/admin/commodity/commodity.compon
     AdminHomeComponent,
     CountryAddComponent,
     CountryEditAddComponent,
-    CommodityComponent
+    CommodityComponent,
+    CommodityDirective
     // NgbInputDatepicker --error Uncaught Error:
     // Type NgbInputDatepicker is part of the declarations of
     // 2 modules: NgbDatepickerModule and AppModule! Please consider
@@ -72,6 +74,7 @@ import { CommodityComponent } from './component/admin/commodity/commodity.compon
     NgbModule.forRoot()
   ],
   providers: [NgbDatepickerConfig],
+  entryComponents: [CommodityAddComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

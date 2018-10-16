@@ -4,7 +4,7 @@
       <tr>
         <th>Index</th>
         <th>Price</th>
-        <th><button class="btn btn-success btn-sm">
+        <th><button class="btn btn-success btn-sm" (click)="loadpopup()">
             <i class="fa fa-plus"></i>
           </button>
       </tr>
@@ -13,8 +13,6 @@
       <tr *ngIf="commoditylist.length>0;then datadisplay else nodata"></tr>
 
     </tbody>
-
-
     <ng-template #nodata>
       <tr>
         <td>
@@ -28,8 +26,14 @@
     </ng-template>
     <ng-template #datadisplay>
       <tr *ngFor="let commitem of commoditylist">
-        <td>commitem.abrvname</td>
-        <td>commitem.price</td>
+        <td>{{commitem.abrvname}}</td>
+        <td>{{commitem.priceperunit}}</td>
+        <td> <button class="p-1 btn btn-sm border rounded border-danger" (click)="deletecomodity(commitem.id)" >
+          <i class="fa fa-trash text-danger"></i>
+        </button></td>
 
       </tr>
+    </ng-template>
+    <ng-template appCommodityEditHost>
+
     </ng-template>

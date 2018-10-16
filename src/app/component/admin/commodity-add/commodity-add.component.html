@@ -1,3 +1,67 @@
-<p>
-  commodity-add works!
-</p>
+<div mdbModal #basicModal="mdbModal" class="modal fade" tabindex="-1"
+role="dialog" aria-labelledby="myBasicModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <!-- <button type="button" class="close float-right" aria-label="Close" (click)="basicModal.hide()">
+          <span aria-hidden="true">×</span>
+        </button> -->
+        <h4 class="modal-title w-100" id="myModalLabel">Add New Commodity</h4>
+      </div>
+        <form (ngSubmit)="addeditCommodity()" [formGroup]="comeditcreateform" >
+          <div class="modal-body">
+
+            <div class="form-group">
+              <label for="">Commodity Name</label>
+              <input type="text" name="comName" class="form-control" formControlName="commname" >
+
+              <span class="text-danger text-monospace"
+              *ngIf="!comeditcreateform.get('commname').valid && comeditcreateform.get('commname').touched" >Commodity name is required</span>
+            </div>
+
+            <div class="form-group">
+              <label for="">Abbreviated Name</label>
+              <input type="text" class="form-control" formControlName="abrvname">
+              <span class="text-danger text-monospace"
+              *ngIf="!comeditcreateform.get('abrvname').valid && comeditcreateform.get('abrvname').touched">Abbreviated name is required</span>
+            </div>
+            <div class="row">
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label for="">Price Per Unit</label>
+                  <input type="text" class="form-control" formControlName="priceperunit">
+                  <span class="text-danger text-monospace"
+                  *ngIf="!comeditcreateform.get('priceperunit').valid && comeditcreateform.get('priceperunit').touched">Price is required</span>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label for="">Available Units</label>
+                  <input type="text" class="form-control" formControlName="avlbunits">
+                  <!-- <span class="text-danger text-monospace">Price is required</span> -->
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label for="">Units to Add</label>
+                  <input type="text" class="form-control" formControlName="unitstoadd">
+                  <span class="text-danger text-monospace"
+                  *ngIf="!comeditcreateform.get('unitstoadd').valid && comeditcreateform.get('unitstoadd').touched">Price is required</span>
+                </div>
+              </div>
+            </div>
+
+
+          </div>
+          <div class="modal-footer">
+            <button type="button" mdbBtn color="secondary" class="waves-light" aria-label="Close" (click)="basicModal.hide()"
+              mdbWavesEffect>Close</button>
+            <button type="submit" mdbBtn color="primary" class="relative waves-light"
+              mdbWavesEffect>Save changes</button>
+          </div>
+        </form>
+      </div>
+
+  </div>
+</div>
